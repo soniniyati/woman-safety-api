@@ -6,9 +6,6 @@ use Rakit\Validation\Validator;
 // allowing only POST requests
 allowOnlyPostRequests();
 
-// SOME CHANGES
-
-
 // getting the input data
 $data = getInputData();
 
@@ -26,7 +23,7 @@ if ($validation->fails()) {
     // handling errors
     $errors = $validation->errors();
     http_response_code(400);
-    echo json_encode(["success" => false, "msg" => $errors->firstOfAll()]);
+    echo json_encode($errors->firstOfAll());
     die();
 }
 
@@ -42,25 +39,21 @@ $user = $db->from('user')
 // checking if the user exists
 if (!$user) {
     http_response_code(401);
-    echo json_encode(["success" => false, "msg" => "Invalid credentials"]);
     die();
 }
 
 // checking if the password is correct
 if (!password_verify($data->password, $user->password)) {
     http_response_code(401);
-    echo json_encode(["success" => false, "msg" => "Invalid credentials"]);
     die();
 }
 
 // generating the token
 try {
     $token = bin2hex(random_bytes(32));
+    echo $token;
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(["success" => false, "msg" => $e->getMessage()]);
     die();
 }
-
-// sending the token to user in the response
-echo json_encode(["success" => true, "token" => $token]);

@@ -64,8 +64,7 @@ $user = $db->from('user')
 
 // checking if the user exists
 if ($user) {
-    http_response_code(400);
-    echo json_encode(["success" => false, "msg" => "User already exists"]);
+    http_response_code(409);
     die();
 }
 
@@ -92,11 +91,9 @@ $user = $db->insert(array(
 // generating the token
 try {
     $token = bin2hex(random_bytes(32));
+    echo $token;
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(["success" => false, "msg" => $e->getMessage()]);
     die();
 }
-
-// sending the token to user in the response
-echo json_encode(["success" => true, "token" => $token]);
