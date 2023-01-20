@@ -3,6 +3,7 @@
         "firebase/php-jwt": "^6.3",
         "opis/database": "^4.0",
       "ext-pdo": "*",
-        "rakit/validation": "^1.4"
+        "rakit/validation": "^1.4",
+        "phpmailer/phpmailer": "^6.7"
     }
 }

@@ -11,6 +11,10 @@ class ComposerStaticInit00bfa80e8bfb468f40a76e9b3b215bab
         array (
             'Rakit\\Validation\\' => 17,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'O' => 
         array (
             'Opis\\Database\\' => 14,
@@ -25,6 +29,10 @@ class ComposerStaticInit00bfa80e8bfb468f40a76e9b3b215bab
         'Rakit\\Validation\\' => 
         array (
             0 => __DIR__ . '/..' . '/rakit/validation/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Opis\\Database\\' => 
         array (

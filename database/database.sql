@@ -8,11 +8,11 @@ USE `women_safety`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) NOT NULL,
-  `middle_name` varchar(255) NOT NULL,
+  `middle_name` varchar(255) NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
-  `dob` date NOT NULL,
+  `dob` datetime NOT NULL,
   `district` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,

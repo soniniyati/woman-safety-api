@@ -11,6 +11,7 @@ header("Content-type: text/html");
     if (!empty($email) && !empty($password)) {
         // check if email is valid
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
             // getting the database connection
             $db = getDBConnection();
 
@@ -25,15 +26,12 @@ header("Content-type: text/html");
             if (empty($user)) {
                 // redirect to login page
                 $_SESSION['error'] = "Invalid email or password";
-                echo "Invalid email or password";
                 header("Location: ../login.php");
             }else{
                 // setting the session
                 $_SESSION['user_id'] = $user->id;
-//                echo $user->id;
                 // redirect to home page
                 header("Location: ../index.php");
-//                echo "Login successful";
             }
 
         } else {

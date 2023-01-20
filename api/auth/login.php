@@ -50,10 +50,10 @@ if (!password_verify($data->password, $user->password)) {
 
 // generating the token
 try {
-    $token = bin2hex(random_bytes(32));
-    echo $token;
+    $token = generate_token($user);
+    http_response_code(200);
+    echo json_encode(["success" => true, "token" => $token]);
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(["success" => false, "msg" => $e->getMessage()]);
-    die();
+    echo json_encode(["success" => false, "msg" => "Internal server error"]);
 }

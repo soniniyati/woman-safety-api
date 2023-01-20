@@ -7,6 +7,7 @@
             <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 <li><a href="index.php">Homepage</a></li>
                 <li><a href="help.php">Help Request</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
     </div>
