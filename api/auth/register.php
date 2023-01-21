@@ -31,7 +31,7 @@ if ($validation->fails()) {
     // handling errors
     $errors = $validation->errors();
     http_response_code(400);
-    echo json_encode(["success" => false, "msg" => $errors->firstOfAll(), "role" => ["1"=> "admin", "2"=> "parent", "3"=> "child"]]);
+    echo json_encode([$errors->firstOfAll(), "role" => ["1"=> "admin", "2"=> "parent", "3"=> "child"]]);
     die();
 }
 

@@ -3,9 +3,7 @@ use Opis\Database\Database;
 use Opis\Database\Connection;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+
 
 
 // Getting the database connection
@@ -119,39 +117,5 @@ function authenticate_user($table, $column, $value, $data)
     } else {
         http_response_code(401);
         exit();
-    }
-}
-
-// Function to send OTP Email to user
-function send_otp_email($email)
-{
-    $mail = new PHPMailer(true);
-    // generate 4 digit otp
-    $otp = rand(1000, 9999);
-
-    try {
-        //Server settings
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp-mail.outlook.com';                     //Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'niyatisoni48@outlook.com';                     //SMTP username
-        $mail->Password   = 'niyati@2003';                               //SMTP password
-        $mail->SMTPSecure = "SSL";            //Enable implicit TLS encryption
-        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-        //Recipients
-        $mail->setFrom('niyatisoni48@outlook.com', 'Women Safety');
-        $mail->addAddress($email);     //Add a recipient
-
-        //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = "women safety OTP verification";
-        $mail->Body    = "Your OTP is $otp";
-
-        $mail->send();
-        return json_encode($otp);
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
